@@ -23,7 +23,7 @@ public class VistaConsola {
     }
     
     public Integer mostrarOpcion(String mensaje) {
-    	String [] options = {  "Aleatorio", "Manual"};
+    	String [] options = {  "Automatico", "Manual"};
     	return JOptionPane.showOptionDialog(null,
     			mensaje,
     			"Tipo de Generación de numeros",
