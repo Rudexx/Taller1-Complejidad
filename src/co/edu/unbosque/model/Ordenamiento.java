@@ -13,28 +13,38 @@ public class Ordenamiento {
         
         switch (opcion) {
 		case "Ordenamiento Burbuja":
+			 long startTime = System.nanoTime();
 			bubbleSort(arreglo);
-			System.out.println("Proceso Terminado");
+			long endTime = System.nanoTime();
+			System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
 			
 			break;
 		case "Ordenamiento de Selección":
+			 startTime = System.nanoTime();
 			selectionSort(arreglo);
-			System.out.println("Proceso Terminado");
+			endTime = System.nanoTime();
+			System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
 			
 			break;
 		case "Ordenamiento Radix":
+			startTime = System.nanoTime();
 			radixSort(arreglo, arreglo.length);
-			System.out.println("Proceso Terminado");
-			
+			endTime = System.nanoTime();
+			System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
 			break;
 			case "Ordenamiento QuickSort":
+				startTime = System.nanoTime();
 				quickSort(arreglo, 0, arreglo.length-1);
-				System.out.println("Proceso Terminado");
-			
+				
+				endTime = System.nanoTime();
+				System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
 						break;
 			case "Ordenamiento MergeSort":
+				startTime = System.nanoTime();
 				sort();
-				System.out.println("Proceso Terminado");
+				endTime = System.nanoTime();
+				System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
+				
 			
 				break;
 			

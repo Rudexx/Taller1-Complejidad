@@ -49,16 +49,13 @@ public class Controller {
             	if(opcion == 0) {
             		if(tipocaso.equalsIgnoreCase("Peor Caso")) {
                         matriz[i] = (int) i;
-                        System.out.println(matriz[i]);
             		}else if(tipocaso.equalsIgnoreCase("Mejor Caso")) {
             			matriz[i] = contador;
             			contador--;
-            			System.out.println(matriz[i]);
             		}else {
             		 Random r = new Random();
                      double numeroM= r.nextInt(1000);
                      matriz[i] = (int) numeroM;
-                     System.out.println(matriz[i]);
             		}
             	}else {
             		try {
