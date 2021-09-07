@@ -54,7 +54,7 @@ public class Controller {
             			contador--;
             		}else {
             		 Random r = new Random();
-                     double numeroM= r.nextInt(1000);
+                     double numeroM= r.nextInt(20);
                      matriz[i] = (int) numeroM;
             		}
             	}else {

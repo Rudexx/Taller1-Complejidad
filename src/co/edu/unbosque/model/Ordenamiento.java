@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Vector;
 
 
@@ -34,7 +35,8 @@ public class Ordenamiento {
 			break;
 			case "Ordenamiento QuickSort":
 				startTime = System.nanoTime();
-				quickSort(arreglo, 0, arreglo.length-1);
+				quicksort(arreglo);
+		
 				
 				endTime = System.nanoTime();
 				System.out.println("Proceso Terminado en: " + (endTime-startTime)/1e6 + " ms");
@@ -123,56 +125,70 @@ public class Ordenamiento {
 	         
 	  }
 	  
-	  // method to find the partition position
-	  static int partition(int array[], int low, int high) {
-	    
-	    // choose the rightmost element as pivot
-	    int pivot = array[high];
-	    
-	    // pointer for greater element
-	    int i = (low - 1);
+	  /*
+	     * Utility method to partition the array into smaller array, and
+	     * comparing numbers to rearrange them as per quicksort algorithm.
+	     */
+	    private static int partition(int[] input, int position, int start, int end) {
+	        int l = start;
+	        int h = end - 2;
+	        int piv = input[position];
+	        swap(input, position, end - 1);
 
-	    // traverse through all elements
-	    // compare each element with pivot
-	    for (int j = low; j < high; j++) {
-	      if (array[j] >= pivot) {
-
-	        // if element smaller than pivot is found
-	        // swap it with the greater element pointed by i
-	        i++;
-
-	        // swapping element at i with element at j
-	        int temp = array[i];
-	        array[i] = array[j];
-	        array[j] = temp;
-	      }
-
+	        while (l < h) {
+	            if (input[l] < piv) {
+	                l++;
+	            } else if (input[h] >= piv) {
+	                h--;
+	            } else {
+	                swap(input, l, h);
+	            }
+	        }
+	        int idx = h;
+	        if (input[h] < piv) {
+	            idx++;
+	        }
+	        swap(input, end - 1, idx);
+	        return idx;
 	    }
 
-	    // swapt the pivot element with the greater element specified by i
-	    int temp = array[i + 1];
-	    array[i + 1] = array[high];
-	    array[high] = temp;
-
-	    // return the position from where partition is done
-	    return (i + 1);
-	  }
-
-	  static void quickSort(int array[], int low, int high) {
-	    if (low < high) {
-
-	      // find pivot element such that
-	      // elements smaller than pivot are on the left
-	      // elements greater than pivot are on the right
-	      int pi = partition(array, low, high);
-	      
-	      // recursive call on the left of pivot
-	      quickSort(array, low, pi - 1);
-
-	      // recursive call on the right of pivot
-	      quickSort(array, pi + 1, high);
+	    /**
+	     * Utility method to swap two numbers in given array
+	     *
+	     * @param arr - array on which swap will happen
+	     * @param i
+	     * @param j
+	     */
+	    private static void swap(int[] arr, int i, int j) {
+	        int temp = arr[i];
+	        arr[i] = arr[j];
+	        arr[j] = temp;
 	    }
-	  }
+
+	
+
+	  public static void quicksort(int[] numbers) {
+	        Stack stack = new Stack();
+	        stack.push(0);
+	        stack.push(numbers.length);
+
+	        while (!stack.isEmpty()) {
+	            int end = (int) stack.pop();
+	            int start = (int) stack.pop();
+	            if (end - start < 2) {
+	                continue;
+	            }
+	            int p = start + ((end - start) / 2);
+	            p = partition(numbers, p, start, end);
+
+	            stack.push(p + 1);
+	            stack.push(end);
+
+	            stack.push(start);
+	            stack.push(p);
+
+	        }
+	    }
 	  
 	  public static void sort(){
 	        int []tempArray = new int[arreglo.length];
