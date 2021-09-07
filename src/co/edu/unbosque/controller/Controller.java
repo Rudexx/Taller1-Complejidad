@@ -20,9 +20,9 @@ public class Controller {
         v = new VistaConsola();
         
         try {
-			int tamano = Integer.parseInt(v.leerDato("Ingrese el tamaÒo de el arreglo"));
+			int tamano = Integer.parseInt(v.leerDato("Ingrese el tama√±o de el arreglo"));
 			int opcion = v.mostrarOpcion("Desea ingresar manualmente los numeros o automaticamente?");
-			Object [] o = {"Ordenamiento Burbuja", "Ordenamiento de SelecciÛn" , "Ordenamiento Radix", "Ordenamiento QuickSort" , "Ordenamiento MergeSort"};
+			Object [] o = {"Ordenamiento Burbuja", "Ordenamiento de Selecci√≥n" , "Ordenamiento Radix", "Ordenamiento QuickSort" , "Ordenamiento MergeSort"};
 			Object[] casos = {"Peor Caso", "Mejor Caso", "Caso Promedio"};
 			String caso = "";
 			if(opcion == 0){
@@ -41,7 +41,13 @@ public class Controller {
        
     }
  
-    
+	 /**
+	 * Este metodo sirve para llenar el arreglo
+ 	 * @param opcion opcion para llenar el arreglo
+	 * @param tamano tama√±o del arreglo
+	 * @param tipocaso tipo del caso que se quiere usar
+	 * @return matriz
+	 */
     public  int[] llenarMatriz(int opcion, int tamano, String tipocaso) {
     	int[] matriz = new int[tamano];
     	int contador = tamano;
